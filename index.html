@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Chelsea+Market&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Alegreya&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Unicase:wght@500&display=swap" rel="stylesheet">
+    <title>Passport-Seva</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            list-style: none;
+            text-decoration: none;
+            font-family: 'Alegreya', serif;
+        }
+
+        body {
+            background-color: rgb(228, 226, 226);
+        }
+
+        /* making nav */
+
+        .wrapper {
+            display: none;
+            width: 200px;
+            color: white;
+            position: fixed;
+            z-index: 10;
+            top: 10vh;
+            height: 90vh;
+            background-color: black;
+            overflow-y: auto;
+        }
+
+
+        .wrapper ul li {
+            margin-top: 10px;
+            cursor: pointer;
+            width: max-content;
+            padding: 4px;
+            margin-left: 5px;
+        }
+
+        .wrapper ul li ul {
+            display: none;
+        }
+
+        a {
+            color: white;
+        }
+
+        /* editng menu closer */
+        #x {
+            position: absolute;
+            top: 5px;
+            color: white;
+            z-index: 11;
+            left: 168px;
+            font-weight: lighter;
+            font-size: x-large;
+            cursor: pointer;
+        }
+
+        /* editng menu opener */
+        .toogle {
+            position: fixed;
+            top: 50%;
+            left: 0;
+            color: white;
+            width: 40px;
+            cursor: pointer;
+        }
+
+        .toogle-holder {
+            background-color: black;
+            position: fixed;
+            top: 10vh;
+            left: 0;
+            width: 40px;
+            height: 90vh;
+        }
+
+        .wrapper ul li:hover {
+            color: rgb(255, 215, 163);
+            transition: all 1s ease-in-out;
+        }
+
+        .wrapper ul li:hover>ul {
+            display: block;
+        }
+
+        .wrapper ul li:hover>ul li {
+            border-bottom: 1px solid white;
+        }
+
+        #title {
+            text-align: center;
+            border-bottom: 2px solid white;
+        }
+
+        /* ediiting topbar */
+        #topbar {
+            position: fixed;
+            z-index: 8;
+            width: 100%;
+            height: 10vh;
+            background-color: black;
+            border-bottom: 1px solid white;
+            color: white;
+        }
+
+        /* editing logo */
+        #emblem {
+            width: 50px;
+            height: 8vh;
+            position: fixed;
+            top: 5px;
+        }
+
+        /* editing text writng */
+        #title-container {
+            display: flex;
+            justify-content: center;
+            position: fixed;
+            z-index: 9;
+            width: 100%;
+            top: 0;
+            overflow: hidden;
+        }
+
+        #title-container div {
+            animation: top-title 6s infinite;
+            font-family: 'Chelsea Market', cursive;
+            font-size: xx-large;
+            width: 100%;
+            height: 8vh;
+            overflow: hidden;
+            white-space: nowrap;
+            border-right: 1px solid white;
+            color: white;
+
+        }
+
+        #main-content {
+            position: relative;
+            top: 10vh;
+            margin-left: 41px;
+            overflow-wrap: break-word;
+        }
+
+        #notice-section {
+            /* display: none; */
+            padding: 5px;
+            overflow-y: auto;
+            position: fixed;
+            top: 100px;
+            color: white;
+            height: 350px;
+            border: 3px solid black;
+            border-radius: 5px;
+            background-color: grey;
+        }
+
+        #notice-section h1 {
+            font-family: 'Cormorant Unicase', serif;
+            position: sticky;
+            width: 100%;
+            top: -5px;
+            font-size: xx-large;
+            text-align: center;
+            background-color: blue;
+            border-bottom: 2px solid white;
+            border-radius: 8px;
+        }
+
+        #notice-section h1 span {
+            position: absolute;
+            font-weight: 500;
+            top: -3px;
+            cursor: pointer;
+            right: 8px;
+        }
+
+        #notice {
+            margin: 3px;
+            padding: 8px;
+            background-color: rgb(81, 119, 243);
+            height: 80%;
+            overflow-y: hidden;
+            border-radius: 5px;
+            border: 2px solid white;
+        }
+
+        #text {
+            animation: notice 10s infinite;
+            position: relative;
+        }
+
+        @keyframes top-title {
+            0% {
+                width: 0ch;
+            }
+
+            50% {
+                width: 6ch;
+            }
+
+            100% {
+                width: 12ch;
+            }
+        }
+
+        @keyframes notice {
+            0% {
+                top: -290px;
+            }
+
+            100% {
+                top: 100%;
+
+            }
+        }
+
+        @media (max-height:445px) {
+            #title-container div {
+                font-size: larger;
+            }
+
+            #notice-section {
+                top: 100px;
+                height: 250px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="toogle-holder"><img src="toogle.PNG" alt="" class="toogle"></div>
+    <div class="wrapper">
+        <h1 id="title">Menu</h1>
+        <span id="x">X</span>
+        <ul>
+            <li id="home">Home</li>
+            <li>About
+                <ul>
+                    <li><a href="https://www.passportindia.gov.in/AppOnlineProject/online/whoAreWe" target="_blank">
+                            PSP Divison
+                        </a>
+                    </li>
+                    <li><a href="https://www.passportindia.gov.in/AppOnlineProject/online/knowPassportSeva"
+                            target="_blank">
+                            Passport-Seva
+                        </a>
+                    </li>
+                </ul>
+            </li>
+            <li>Passport Offices
+                <ul>
+                    <li><a href="https://www.passportindia.gov.in/AppOnlineProject/online/rpo" target="_blank">Passport
+                            Offices in
+                            India</a></li>
+                    <li><a href="https://www.passportindia.gov.in/AppOnlineProject/mission/mission"
+                            target="_blank">Mission/Post
+                            award</a></li>
+                </ul>
+            </li>
+            <li>
+                Counsular/Visa
+                <ul>
+                    <li><a href="https://www.mea.gov.in/cpv.htm" target="_blank">Counsular Services</a></li>
+                    <li><a href="https://www.mea.gov.in/cpv.htm" target="_blank">Visa Services</a></li>
+                    <li><a href="https://madad.gov.in/AppConsular/welcomeLink" target="_blank">Log and Track
+                            Grievances</a></li>
+                </ul>
+            </li>
+            <li><a href="https://www.passportindia.gov.in/AppOnlineProject/online/rti" target="_blank">RTI</a></li>
+            <li><a href="https://www.passportindia.gov.in/AppOnlineProject/pdf/Citizen_Charter.pdf"
+                    target="_blank">Citizen's-Charter</a>
+            </li>
+            <li>
+                Contact Us
+                <ul id="contact">
+
+                    <li><a href="https://www.passportindia.gov.in/AppOnlineProject/online/consularOfficers"
+                            target="_blank">Visa Services</a></li>
+                    <li><a href="https://www.passportindia.gov.in/AppOnlineProject/online/consularOfficers"
+                            target="_blank">Consular/Visa</a></li>
+                    <li>
+                        Passport
+                        <ul id="passport">
+                            <li><a href="https://www.passportindia.gov.in/AppOnlineProject/online/callCenter"
+                                    target="_blank">Genral information</a></li>
+                            <li><a href="https://www.passportindia.gov.in/AppOnlineProject/online/chiefOfficer"
+                                    target="_blank">Chief Passport Officer</a></li>
+                            <li><a href="https://www.passportindia.gov.in/AppOnlineProject/online/rpo"
+                                    target="_blank">Passport Offices</a></li>
+                            <li><a href="https://www.passportindia.gov.in/AppOnlineProject/online/vigilance"
+                                    target="_blank">Vilgilance Unit</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </li>
+            <li id="notice-toogler">Notice-Toogler</button>
+        </ul>
+    </div>
+    <div id="topbar"><img src="emblem_new.png" alt="emblem" id="emblem"></div>
+    <section id="title-container">
+        <div id="top-title">Passport-Seva</div>
+    </section>
+    <section id="main-content">
+        <section id="notice-section">
+            <h1>Notice-Section <span id="remove">X</span></h1>
+            <Section id="notice">
+                <section id="text">
+                    Press Release - All Women PSK New
+                    Integration of DigiLocker with Passport Services New
+                    List of Indian Missions/Post Integrated with Passport Seva System New
+                    All Passport Seva Kendras (PSKs) and Post Office Passport Seva Kendras (POPSKs) are operational now.
+                    Applicants may
+                    reschedule their appointments to the nearest PSK/POPSK to avail the services. Applicants are advised
+                    to
+                    wear a mask,
+                    carry sanitizer, download and install Aarogya Setu App and follow social distancing norms at
+                    PSKs/POPSKs
+                    during the
+                    visit. New
+                </section>
+            </Section>
+        </section>
+        Lorem ipsum dolor, sit amet consectetur adipisicing elit. Sed ipsa voluptas praesentium consectetur dicta ullam
+        asperiores tenetur architecto minus accusamus at, voluptatibus labore a vel illo corporis, facilis sint qui
+        inventore omnis pariatur eius sapiente rem? Esse, amet numquam dignissimos autem possimus ipsam facere ullam
+        laboriosam sed aperiam dolore totam officia repudiandae animi in mollitia eligendi quibusdam, inventore nulla
+        quasi ut doloribus. Adipisci sunt neque possimus necessitatibus quae velit molestiae ducimus pariatur quos
+        accusantium. Sapiente unde necessitatibus illum minus! Voluptatibus nesciunt quae doloremque facilis maxime
+        pariatur, esse itaque architecto, sed nostrum voluptatum fugit assumenda recusandae repellat. Dolorum dolore
+        dolorem aperiam minus sit eos qui eius cum explicabo, vero molestias non laudantium culpa commodi illum
+        consectetur numquam, quidem accusantium ea ab. Laboriosam natus architecto cumque debitis consectetur tempore
+        repellendus deleniti enim fugit veniam qui, blanditiis laudantium itaque obcaecati eius nihil a ratione velit
+        suscipit voluptatibus corrupti maxime voluptates quo officiis. Quia at saepe molestias aperiam! Aspernatur vero
+        voluptatum dicta illum repellendus nisi tenetur, aliquid mollitia exercitationem, laborum praesentium soluta
+        tempore quidem labore delectus vitae sed perferendis quisquam quaerat ducimus minus assumenda hic magnam? Facere
+        libero quae maxime hic mollitia vero, ipsa odio unde cupiditate enim accusamus, autem impedit, iure incidunt!
+        Accusamus id quas molestias atque! A placeat quisquam enim eius dolorum molestias harum doloremque perspiciatis
+        delectus at similique possimus quaerat reiciendis earum deleniti rem recusandae hic tempore accusamus, nihil
+        dicta fuga! Quisquam placeat tenetur quam, necessitatibus quia praesentium iste magni voluptates doloribus nemo
+        distinctio, molestiae nam voluptatibus, est et debitis fuga quidem. Vel voluptatem nobis aperiam a sit quos
+        voluptates accusamus repellendus asperiores, modi nam labore at sequi. Odio facilis inventore sed quaerat
+        cupiditate, voluptatibus iusto provident sunt illum explicabo, ipsam dicta! Autem cupiditate cumque incidunt est
+        deleniti iusto voluptates voluptatem unde dolore mollitia praesentium aspernatur molestiae maiores culpa numquam
+        temporibus architecto, amet explicabo id recusandae corrupti. Alias voluptatibus tenetur quibusdam, non error
+        nihil distinctio suscipit fuga ex doloribus velit impedit nobis quaerat adipisci voluptatum consequuntur
+        blanditiis harum, repellendus ipsam itaque omnis sunt autem voluptas molestiae? Provident totam, beatae
+        similique ab itaque vero exercitationem quas commodi adipisci vitae nisi praesentium expedita sed eveniet
+        reiciendis qui. Sapiente nisi ipsam est laborum deserunt, modi tenetur natus nam voluptatum ipsum nulla placeat
+        eius fugiat debitis libero accusamus iure vero inventore, architecto dicta. Repellendus possimus, deserunt ipsa
+        eligendi velit vitae porro, praesentium veritatis repudiandae iste dicta minima. Suscipit optio corrupti minima
+        quos accusamus quis quia quaerat amet similique! Officiis quo quis mollitia, aliquid ex atque accusamus esse,
+        iure iste hic inventore minus? Accusantium, vel officia. Ad, assumenda sit fugit perferendis quae, deleniti
+        culpa cum, architecto eum sapiente officia autem excepturi. Fugiat incidunt ipsa autem provident distinctio
+        voluptate tenetur voluptatem deserunt nesciunt molestiae, asperiores reprehenderit in at dolorum rem. Cupiditate
+        eum nisi accusamus optio voluptatibus totam exercitationem ipsa obcaecati? Aperiam doloremque similique,
+        perspiciatis unde odio quidem? Sint alias placeat excepturi eveniet, aliquam nemo doloremque mollitia quas,
+        corrupti voluptatibus assumenda expedita veritatis, dolorem explicabo repellendus eaque impedit consectetur
+        magni deserunt. Sit aut, excepturi harum a eaque dolorum.
+    </section>
+</body>
+<script>
+    let cross = document.getElementById("x")
+    let remove = document.getElementById("remove")
+    let toogle = document.querySelector(".toogle")
+    let notice_toogler = document.querySelector("#notice-toogler")
+    let text = document.querySelector("#notice")
+    let scroller = document.querySelector("#text")
+    text.addEventListener("mouseover", function () {
+        scroller.style.animation = "pause"
+    })
+    text.addEventListener("mouseout", function () {
+        scroller.style.animation = "notice 10s infinite"
+    })
+    cross.addEventListener("click", function () {
+        let wrapper = document.querySelector(".wrapper")
+        wrapper.style.display = "none"
+    })
+    remove.addEventListener("click", function () {
+        let notice_section = document.querySelector("#notice-section")
+        notice_section.style.display = "none"
+    })
+    toogle.addEventListener("click", function () {
+        let wrapper = document.querySelector(".wrapper")
+        wrapper.style.display = "block"
+    })
+    notice_toogler.addEventListener("click", function () {
+        let notice_section = document.querySelector("#notice-section")
+        let wrapper = document.querySelector(".wrapper")
+        wrapper.style.display = "none"
+        notice_section.style.display = "block"
+    })
+</script>
+
+</html>
